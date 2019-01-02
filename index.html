@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Noise Generator</title>
+    <link href="reset.css" rel='stylesheet' type='text/css'>
+    <link href="style.css" rel='stylesheet' type='text/css'>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="perlin.js"></script>
+    <script src="functions.js"></script>
+    <script src="stats.js"></script>
+    <script src="main.js"></script>
+    <script src="coolbackground.js"></script>
+</head>
+<body>
+<div id="wait"></div>
+<canvas id="canvas"></canvas>
+<div id="container">
+    <div id="page">
+        <div id="presets" class="shadows">
+            <h2>Presets</h2>
+            <ul id="presetList">
+            </ul>
+        </div>
+        <div id="form" class="shadows">
+            <form>
+                <h2>Noise Generator</h2><input class="button" type="button" id="minimize" title="Minimize" value="">
+                <div title="A larger scale makes the noise smoother">
+                    <label for="scale">Scale:</label><input class="number" id="scale" type="number" value="2000" min="1" step="1">
+                </div>
+                <div title="More octaves with bigger wavelengths makes larger features, but makes generation take longer">
+                    <label for="octaves">Octaves:</label><input class="number" id="octaves" type="number" value="1" min="1" step="1">
+                </div>
+                <div title="The amount by which the wavelength is multiplied between each octave">
+                    <label for="octStep">OctStep:</label><input class="number" id="octStep" type="number" value="2" min="1" step="0.5">
+                </div>
+                <div title="Higher persistence gives more weight to the larger wavelengths">
+                    <label for="persistence">Persistence:</label><input class="number" id="persistence" type="number" value="2" min="1" step="0.5">
+                </div>
+                <div id="styleContainer">
+                    <div>
+                        <label for="style">Style:</label>
+                        <select id="style">
+                            <option value="terrain" class="option">Terrain</option>
+                            <option selected value="bump" class="option">Bump</option>
+                            <option value="lines" class="option">Lines</option>
+                            <option value="linear" class="option">Linear</option>
+                            <option value="treshold" class="option">Treshold</option>
+                        </select>
+                    </div>
+                    <div style="display:none">
+                        <label for="treshold">Treshold:</label><input class="number" id="treshold" type="number" value="50" min="0" max="100" step="1">
+                    </div>
+                    <div>
+                        <label for="contrast">Contrast:</label><input class="number" id="contrast" type="number" value="18" min="1" step="1">
+                    </div>
+                    <div style="display:none">
+                        <div><label for="lines">Divisions:</label><input class="number" id="lines" type="number" value="7" min="2" step="1"></div>
+                        <div><label for="thickness">Thickness:</label><input class="number" id="thickness" type="number" value="1" min="0.1" max="999" step="0.1"></div>
+                    </div>
+                    <div style="display:none">
+                        <label for="color">Color:</label>
+                        <select id ="color" >
+                            <option value="greyscale" class="option">Greyscale</option>
+                            <option selected value="fire" class="option">Fire</option>
+                            <option value="fuchsia" class="option">Fuchsia</option>
+                            <option value="purple" class="option">Purple</option>
+                            <option value="blue" class="option">Blue</option>
+                            <option value="minty" class="option">Minty</option>
+                            <option value="lime" class="option">Lime</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="animate">Animate:</label>
+                    <input type="button" id="animate" class="toggle" value="Yes">
+                </div>
+                <div>
+                    <label for="speed">Speed:</label><input class="number" id="speed" type="number" value="2" min="0.5" step="0.5">
+                    <div id="explanation">
+                        While animating, the resolution is divided by 10. Turn off animation and click on 'Generate' to view the result in higher resolution.
+                    </div>
+                </div>
+                    <input id="submit" class="button" type="button" value="Generate">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
